@@ -1,4 +1,5 @@
-use crate::{parser::RawIter, request::Error};
+use super::error::Error;
+use crate::parser::RawIter;
 
 /// HTTP defines a set of request methods to indicate the desired action to be performed for a given resource. Although they can also be nouns, these request methods are sometimes referred to as HTTP verbs. Each of them implements a different semantic, but some common features are shared by a group of them: e.g. a request method can be safe, idempotent, or cacheable.
 /// All docs for this are from the source: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
@@ -72,7 +73,7 @@ pub fn parse_method(request: &mut RawIter) -> Result<Method, Error> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::{parser::RawIter, request::Error};
+    use crate::parser::RawIter;
 
     #[test]
     fn parse_methodget_returns_ok() {
